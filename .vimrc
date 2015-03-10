@@ -433,4 +433,3 @@ let g:miniBufExplForceSyntaxEnable = 1
 
 set tag=/home/paasuser1/source/nova/tags
 cscope add /home/paasuser1/source/nova/cscope.out
-
