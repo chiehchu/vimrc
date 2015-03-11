@@ -238,7 +238,7 @@ endif
 " toggle tagbar display
 map wm :TagbarToggle<CR>
 " autofocus on tagbar open
-let g:tagbar_autofocus = 0
+let g:tagbar_autofocus = 1
 
 " NERDTree ----------------------------- 
 
@@ -433,3 +433,16 @@ let g:miniBufExplForceSyntaxEnable = 1
 
 set tag=/home/paasuser1/source/nova/tags
 cscope add /home/paasuser1/source/nova/cscope.out
+
+"cscope related shortcut
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+set ttymouse=xterm2
