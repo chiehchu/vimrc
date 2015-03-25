@@ -431,8 +431,52 @@ let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplCheckDupeBufs = 0
 let g:miniBufExplForceSyntaxEnable = 1
 
-set tag=/home/paasuser1/source/nova/tags
-cscope add /home/paasuser1/source/nova/cscope.out
+function! AutoLoadCTagsAndCScope()
+    let max = 10
+    let dir = './'
+    let i = 0
+    let break = 0
+    while isdirectory(dir) && i < max
+        if filereadable(dir . 'GTAGS')
+            execute 'cs add ' . dir . 'GTAGS ' . glob("`pwd`")
+            let break = 1
+        endif
+        if filereadable(dir . 'cscope.out')
+            execute 'cs add ' . dir . 'cscope.out'
+            let break = 1
+        endif
+        if filereadable(dir . 'tags')
+            execute 'set tags =' . dir . 'tags'
+            let break = 1
+        endif
+        if break == 1
+            execute 'lcd ' . dir
+            break
+        endif
+        let dir = dir . '../'
+        let i = i + 1
+    endwhile
+endf
+"nmap <F7> :call AutoLoadCTagsAndCScope()<CR>
+call AutoLoadCTagsAndCScope()
+" call AutoLoadCTagsAndCScope()
+
+set tags=tags;
+set autochdir
+"if has("cscope")  
+    "set csprg=/usr/bin/cscope  
+    "set csto=0  
+    "set cst  
+    "set nocsverb  
+     "add any database in current directory  
+    "if filereadable("cscope.out")  
+        "cs add cscope.out  
+     "else add database pointed to by environment  
+    "elseif $CSCOPE_DB != ""  
+        "cs add $CSCOPE_DB  
+    "endif  
+    "set csverb  
+"endif 
 
 "cscope related shortcut
 set cscopequickfix=s-,c-,d-,i-,t-,e-
@@ -446,3 +490,5 @@ nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 set ttymouse=xterm2
+
+set paste
