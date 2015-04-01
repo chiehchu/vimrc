@@ -491,4 +491,4 @@ nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 set ttymouse=xterm2
 
-set paste
+"set paste
