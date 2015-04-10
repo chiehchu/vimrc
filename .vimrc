@@ -492,3 +492,6 @@ nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 set ttymouse=xterm2
 
 "set paste
+
+"replace the selected words
+vnoremap s y:%s/<C-R>=escape(@", '\\/.*$^~[]')<CR>/
