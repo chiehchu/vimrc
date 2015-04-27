@@ -237,6 +237,7 @@ endif
 
 " toggle tagbar display
 map wm :TagbarToggle<CR>
+let g:tagbar_left = 1
 " autofocus on tagbar open
 let g:tagbar_autofocus = 1
 
